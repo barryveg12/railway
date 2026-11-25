@@ -45,12 +45,12 @@ app.use('/api/asociados', asociadoRoutes);
 const distPath = path.resolve(__dirname, '../ReactCliente/ReactInicio/dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-  // Cualquier ruta GET que no empiece con /api devuelve index.html para react-router
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api')) {
-      return next();
+  // Middleware catch-all para SPA compatible con Express 5
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      return res.sendFile(path.join(distPath, 'index.html'));
     }
-    res.sendFile(path.join(distPath, 'index.html'));
+    next();
   });
 } else {
   // Ruta base informativa cuando no se sirve la SPA
