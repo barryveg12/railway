@@ -71,7 +71,7 @@ export default function Login() {
       <div style={styles.card}>
         <div style={styles.header}>
           <div style={styles.iconCircle}>🔐</div>
-          <h2 style={styles.title}>Iniciar Sesión</h2>
+          <h2 style={styles.title}>Forward Costa Rica</h2>
           <p style={styles.subtitle}>Sistema de Biblioteca y Gestión</p>
         </div>
 
