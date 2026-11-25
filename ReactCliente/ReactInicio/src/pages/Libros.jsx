@@ -1,4 +1,4 @@
-import FormLibros from '../componets/formLibros';
+import FormLibros from '../componets/FormLibros';
 
 export default function Libros() {
   const handleLibroGuardado = (libro) => {

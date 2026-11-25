@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../componets/Sidebar';
-import FormLibros from '../componets/formLibros';
+import FormLibros from '../componets/FormLibros';
 import ChatLibros from '../componets/chatLibros';
 import { getUsuarioActual, logout, obtenerUsuarios, obtenerRoles } from '../services/authService';
 import { obtenerLibros, actualizarLibro, eliminarLibro } from '../services/librosService';
