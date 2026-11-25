@@ -1,0 +1,16 @@
+{
+  "name": "railway-biblioteca-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de Gestion de Biblioteca con ORM Express y React desplegable en Railway",
+  "scripts": {
+    "install:all": "npm install --prefix ORM && npm install --prefix ReactCliente/ReactInicio",
+    "build": "npm run build --prefix ReactCliente/ReactInicio",
+    "start": "node ORM/index.js",
+    "dev:backend": "npm run dev --prefix ORM",
+    "dev:frontend": "npm run dev --prefix ReactCliente/ReactInicio"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

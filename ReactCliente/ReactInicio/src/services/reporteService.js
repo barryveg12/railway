@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:3000/api/reportes';
+import { API_BASE_URL } from '../config/api';
+
+const BASE_URL = `${API_BASE_URL}/reportes`;
 
 const getAuthHeaders = () => {
   const headers = { 'Content-Type': 'application/json' };

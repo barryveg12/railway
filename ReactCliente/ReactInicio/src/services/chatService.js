@@ -1,4 +1,6 @@
-const API_CHAT_URL = 'http://localhost:3000/api/chat';
+import { API_BASE_URL } from '../config/api';
+
+const API_CHAT_URL = `${API_BASE_URL}/chat`;
 
 /**
  * Envía un mensaje al agente de Claude a través de la API

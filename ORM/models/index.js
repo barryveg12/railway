@@ -10,10 +10,41 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
+const dbUrl = process.env.MYSQL_URL || process.env.DATABASE_URL;
+
+if (dbUrl) {
+  sequelize = new Sequelize(dbUrl, {
+    dialect: 'mysql',
+    logging: process.env.NODE_ENV === 'development' ? console.log : false,
+    dialectOptions: {
+      connectTimeout: 60000
+    }
+  });
+} else if (process.env.MYSQLHOST || process.env.DB_HOST) {
+  const host = process.env.MYSQLHOST || process.env.DB_HOST;
+  const port = process.env.MYSQLPORT || process.env.DB_PORT || 3306;
+  const username = process.env.MYSQLUSER || process.env.DB_USER || 'root';
+  const password = process.env.MYSQLPASSWORD || process.env.DB_PASSWORD || '';
+  const database = process.env.MYSQLDATABASE || process.env.DB_NAME || 'railway';
+
+  sequelize = new Sequelize(database, username, password, {
+    host,
+    port,
+    dialect: 'mysql',
+    logging: process.env.NODE_ENV === 'development' ? console.log : false,
+    dialectOptions: {
+      connectTimeout: 60000
+    }
+  });
+} else if (config && config.use_env_variable && process.env[config.use_env_variable]) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
+} else if (config) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
+} else {
+  sequelize = new Sequelize('biblioteca', 'root', '1234', {
+    host: '127.0.0.1',
+    dialect: 'mysql'
+  });
 }
 
 fs
