@@ -169,7 +169,8 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#0f172a',
+    backgroundColor: '#1e3a8a',
+    background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%)',
     padding: '20px',
     boxSizing: 'border-box',
     fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
